@@ -62,15 +62,6 @@
 
 ---
 
-### 📊 GitHub Stats
-
-
-<div align="center">
-<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Rishavbhattarai&layout=compact&theme=tokyonight&hide_border=true" alt="Top languages" height="165" />
-</div>
-
----
-
 <div align="center">
 
 **📄 [Download my CV](https://rishavunlv.github.io/assets/Rishav_Bhattarai_CV.pdf)** · **🌐 [Full Portfolio](https://rishavunlv.github.io/portfolio.html)**
