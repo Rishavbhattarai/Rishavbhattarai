@@ -64,6 +64,6 @@
 
 <div align="center">
 
-**📄 [Download my CV](https://rishavunlv.github.io/assets/Rishav_Bhattarai_CV.pdf)** · **🌐 [Full Portfolio](https://rishavunlv.github.io/portfolio.html)**
+**📄 [Download my CV](cvRishavB.pdf)** · **🌐 [Full Portfolio](https://rishavunlv.github.io/portfolio.html)**
 
 </div>
