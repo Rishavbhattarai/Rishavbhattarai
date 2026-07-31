@@ -30,7 +30,7 @@
 | [**AI Knowledge Assistant**](https://github.com/Rishavbhattarai/ai-knowledge-assistant) | GraphRAG-based knowledge assistant — semantic search, entity graph storage, and webhook-driven workflow automation | `Python` `FastAPI` `ChromaDB` `Neo4j` |
 | [**Project-Aegis**](https://github.com/Rishavbhattarai/Project-Aegis) | Enterprise MCP security gateway — RBAC + LLM-based intent analysis + PII redaction, with a live audit dashboard | `Node.js` `WebSockets` `Postgres/Supabase` |
 
-*More Salesforce, dashboard, and cybersecurity-risk projects on my [full portfolio →](https://rishavunlv.github.io/portfolio.html)*
+*More Salesforce, dashboard, and cybersecurity-risk projects on my [full portfolio →](https://rishavbhattarai.com.np/portfolio.html)*
 
 ---
 
