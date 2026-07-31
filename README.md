@@ -4,7 +4,7 @@
 
 **Salesforce Developer @ UNLV Office of Information Technology · Java/Spring Boot Engineer · MS in MIS (2026)**
 
-[![Portfolio](https://img.shields.io/badge/Portfolio-rishavunlv.github.io-3b82f6?style=for-the-badge)](https://rishavunlv.github.io/portfolio.html)
+[![Portfolio](https://img.shields.io/badge/Portfolio-rishavunlv.github.io-3b82f6?style=for-the-badge)](https://rishavbhattarai.com.np/portfolio.html)
 [![Email](https://img.shields.io/badge/Email-bhattarai.rishav%40gmail.com-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:bhattarai.rishav@gmail.com)
 
 </div>
