@@ -77,6 +77,6 @@ Earlier AI-security work: [Zenith](https://github.com/Rishavbhattarai/Zenith) (M
 
 <div align="center">
 
-**🌐 [Full Portfolio](https://rishavunlv.github.io/portfolio.html)**
+**🌐 [Full Portfolio](https://rishavbhattarai.com.np/portfolio.html)**
 
 </div>
