@@ -17,7 +17,8 @@
 - 💼 6 years as a **Senior Java/Spring Boot Developer** before that (2018–2024), building fintech payment microservices that handled 4,000+ daily transactions
 - 🎓 **MS in Management Information Systems**, UNLV (May 2026), with a conference paper on CISO budget defense modeling
 - 🧠 Building and measuring: a crash-safe job queue, a usage-billing pipeline that reconciles to Salesforce, a cell-injury screen for drug discovery, and RAG evaluations that report where each method loses
-- 🔀 Sending fixes upstream to Apache Airflow, OpenDataLoader PDF and hmmix (pull requests below, all open)
+- 🧩 Wrote two Claude Code plugins that reject bad code before it reaches disk: Salesforce deploy breakers, and Supabase RLS holes plus code that won't run on Cloudflare Workers
+- 🔀 3 pull requests merged upstream: two Apache SeaTunnel source connectors (Intercom, Typeform) and a tagged-PDF fix in OpenDataLoader PDF. Four more under review at Keycloak, Apache Airflow, Docling and hmmix
 - 🌱 Background in Nepal building production fintech (**PayMe & AwiPay**, 100K+ users) before moving into Salesforce + AI engineering
 
 ---
@@ -29,16 +30,27 @@
 | [**CytoGuard**](https://github.com/Rishavbhattarai/cytoguard-cell-painting) | Flags injured wells in Cell Painting drug screens and names the injury mechanism. On compounds the model never saw, macro-F1 is **0.462 vs 0.146** for the published baseline, and injured-vs-healthy AUROC is **0.947**. A label-shuffled control scores chance (0.053). | `Python` `LightGBM` `Cellpose-SAM` |
 | [**jobq**](https://github.com/Rishavbhattarai/distributed-job-queue) | Job queue that never loses a job or runs one twice by mistake. In a 10,000-job run with a worker killed every 10 seconds (13 kills), all 10,000 succeeded and none ran to success twice. 63 tests, CI runs a chaos test. | `Python` `FastAPI` `Redis` `PostgreSQL` `Prometheus` |
 | [**Usage Metering & Billing**](https://github.com/Rishavbhattarai/usage-metering-billing) | Turns raw usage events into invoices and syncs them to Salesforce. Ingests 1M events (10% duplicates) at **38,568 events/s**, stores exactly the unique ones, and rebuilds all 200 invoices from the event log with identical SHA-256 hashes. Ledger and Salesforce match to the cent, zero drift. | `Python` `FastAPI` `PostgreSQL` `Salesforce Bulk API 2.0` |
+| [**FlowGuard for Salesforce DX**](https://github.com/Rishavbhattarai/salesforce-flowguard) | Claude Code plugin that blocks hardcoded RecordType and Profile IDs, SOQL and DML inside loops, and Flows with no fault path, before Claude writes or commits them. 12 rules, 55 unit tests. On the hardcoded-ID eval it scores **1.00 with the plugin and 0.00 without**. | `Python` `Apex` `Salesforce Flow` `Claude Code hooks` |
+| [**RLS & Edge Guard**](https://github.com/Rishavbhattarai/rls-edge-guard) | Claude Code plugin that rejects an edit if it adds a Supabase RLS hole, puts a service-role key in the browser, or uses Node code that won't run on Cloudflare Workers. Across 9 eval cases it lifted Sonnet from **0.78 to 0.98** and Haiku from **0.76 to 0.93**. Without it, every model shipped a table with RLS off when asked for "just the table". Static findings are checked against real Postgres with pgTAP. | `Python` `Supabase` `PostgreSQL` `Cloudflare Workers` |
 | [**Tanks Arena**](https://github.com/Rishavbhattarai/multiplayer-arena) | Authoritative-server multiplayer netcode. Holds **1,680 players** on one Node process within the 33 ms tick (p99 26.4 ms). Delta snapshots cut per-player bandwidth by **73%**. A cheating client is rejected and corrected. | `TypeScript` `WebSockets` `Prometheus` |
 | [**GraphRAG vs Vector RAG**](https://github.com/Rishavbhattarai/multihop-rag-showdown-) | Side-by-side evaluation on 50 MuSiQue multi-hop questions, fully local on Ollama. Pure GraphRAG lost (18% vs 28%); a hybrid of both scored best (34%). With 50 questions the gaps are not statistically significant, and the README says so. | `Python` `Ollama` `ChromaDB` |
 | [**CAFE-RAG**](https://github.com/Rishavbhattarai/CAFE-RAG) | Plain-language search over 818 climate-health datasets on Harvard Dataverse. recall@5 **0.705**, MRR **0.635** on a 44-query gold set. | `Python` `SQLite FTS5` `ChromaDB` `Ollama` |
 
-**Open-source pull requests (all open, under review)**
+**Open-source pull requests: merged**
 
 | PR | What it does |
 |---|---|
-| [apache/airflow #74618](https://github.com/apache/airflow/pull/74618) | Masks URL-encoded connection passwords in the task SDK so they stop leaking into logs (fixes [#38144](https://github.com/apache/airflow/issues/38144)). Regression tests for the sync, async and handler paths. |
+| [apache/seatunnel #12831](https://github.com/apache/seatunnel/pull/12831) | Adds an Intercom source connector to SeaTunnel (design in [#12823](https://github.com/apache/seatunnel/issues/12823)). Fixed all four review items; the integration test passes on Java 11 and 17. |
+| [apache/seatunnel #12844](https://github.com/apache/seatunnel/pull/12844) | Adds a Typeform source connector (fixes [#12822](https://github.com/apache/seatunnel/issues/12822)). Pages with Typeform's `before` cursor and waits 500 ms between requests to stay under its 2 requests/s limit. 20 unit tests. |
 | [opendataloader-pdf #776](https://github.com/opendataloader-project/opendataloader-pdf/pull/776) | Shares one marked-content ID across adjacent text operators. PDFs from Google Docs and Chrome print had one tag per letter in the structure tree. |
+
+**Open-source pull requests: under review**
+
+| PR | What it does |
+|---|---|
+| [keycloak/keycloak #54079](https://github.com/keycloak/keycloak/pull/54079) | Makes the OTP device picker in the keycloak.v2 login theme work from the keyboard (fixes [#51208](https://github.com/keycloak/keycloak/issues/51208)). The selected state is plain CSS, so it still shows with JavaScript off. |
+| [apache/airflow #74618](https://github.com/apache/airflow/pull/74618) | Masks URL-encoded connection passwords in the task SDK so they stop leaking into logs (fixes [#38144](https://github.com/apache/airflow/issues/38144)). Regression tests for the sync, async and handler paths. |
+| [docling-serve #732](https://github.com/docling-project/docling-serve/pull/732) | Names zip downloads after the source document instead of `converted_docs.zip` (fixes [#693](https://github.com/docling-project/docling-serve/issues/693)). |
 | [hmmix #9](https://github.com/LauritsSkov/Introgression-detection/pull/9) | Packaging, tests and CI for a genomics tool, and **6–7× faster with 2.5–3.5× lower memory**, with output identical to the 0.9.2 release. |
 
 Earlier AI-security work: [Zenith](https://github.com/Rishavbhattarai/Zenith) (MCP security and observability gateway), [Hyperion](https://github.com/Rishavbhattarai/Hyperion) (zero-trust validation of AI-generated infrastructure actions), [Project-Aegis](https://github.com/Rishavbhattarai/Project-Aegis) (MCP gateway with RBAC and PII redaction) and [AI Knowledge Assistant](https://github.com/Rishavbhattarai/ai-knowledge-assistant) (GraphRAG).
