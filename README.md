@@ -18,7 +18,7 @@
 - 🎓 **MS in Management Information Systems**, UNLV (May 2026), with a conference paper on CISO budget defense modeling
 - 🧠 Building and measuring: a crash-safe job queue, a usage-billing pipeline that reconciles to Salesforce, a cell-injury screen for drug discovery, and RAG evaluations that report where each method loses
 - 🧩 Wrote two Claude Code plugins that reject bad code before it reaches disk: Salesforce deploy breakers, and Supabase RLS holes plus code that won't run on Cloudflare Workers
-- 🔀 10 pull requests merged upstream: two Apache SeaTunnel source connectors (Intercom, Typeform), a tagged-PDF fix in OpenDataLoader PDF, a zip filename field in Docling, an MCP server fix in Prisma's Claude Code plugin, and five TheAlgorithms/Java bug fixes found with a fuzz harness I wrote.
+- 🔀 11 pull requests merged upstream: two Apache SeaTunnel source connectors (Intercom, Typeform), a test moved off a deprecated API in Apache Beam, a tagged-PDF fix in OpenDataLoader PDF, a zip filename field in Docling, an MCP server fix in Prisma's Claude Code plugin, and five TheAlgorithms/Java bug fixes found with a fuzz harness I wrote.
 - 🌱 Background in Nepal building production fintech (**PayMe & AwiPay**, 100K+ users) before moving into Salesforce + AI engineering
 
 ---
@@ -42,6 +42,7 @@
 |---|---|
 | [apache/seatunnel #12831](https://github.com/apache/seatunnel/pull/12831) | Adds an Intercom source connector to SeaTunnel (design in [#12823](https://github.com/apache/seatunnel/issues/12823)). Fixed all four review items; the integration test passes on Java 11 and 17. |
 | [apache/seatunnel #12844](https://github.com/apache/seatunnel/pull/12844) | Adds a Typeform source connector (fixes [#12822](https://github.com/apache/seatunnel/issues/12822)). Pages with Typeform's `before` cursor and waits 500 ms between requests to stay under its 2 requests/s limit. 20 unit tests. |
+| [apache/beam #40865](https://github.com/apache/beam/pull/40865) | Moves `SplittableParDoProcessFnTest` off the deprecated `DoFnTester`. The tests advance processing time and fire timers by hand, which `TestPipeline` can't do, so the test helper now runs `ProcessFn` through `DoFnRunners.simpleRunner`, the same runner the DirectRunner uses. All 15 tests pass with their bodies unchanged. |
 | [opendataloader-pdf #776](https://github.com/opendataloader-project/opendataloader-pdf/pull/776) | Shares one marked-content ID across adjacent text operators. PDFs from Google Docs and Chrome print had one tag per letter in the structure tree. |
 | [docling-project/docling #4996](https://github.com/docling-project/docling/pull/4996) | Adds an optional `filename` to `ZipArchiveResult`, so a converted zip can carry a real download name instead of `converted_docs.zip`. Older results still validate. Step 1 of a three-repo change for [docling-serve #732](https://github.com/docling-project/docling-serve/pull/732). |
 | [prisma/claude-plugin #3](https://github.com/prisma/claude-plugin/pull/3) | Pins the local Prisma MCP server to `prisma@7.10.1`. Unpinned, `npx` pulled the 8.0 release candidate, which has no `mcp` command, so the server failed to start in Claude Code. |
